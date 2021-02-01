@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Models\Usuario;
+use Firebase\JWT\JWT;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class UsuariosController extends ApiController {
     
@@ -10,8 +14,10 @@ class UsuariosController extends ApiController {
     /** Loga o usuário */
     public function logar(Request $request) {
         $usuario = Usuario::where('email', $request->email)
-                            ->where('senha', md5($request->senha))
                             ->firstOrFail(); //Senão achar retorna 404
+
+        if (!Hash::check($request->senha, $usuario->senha))
+            abort(404);
 
         $jwt = JWT::encode(['id' => $usuario->id], config('jwt.senha'));
         return response()->json(['jwt' => $jwt, 'usuario' => $usuario], 200);
@@ -19,7 +25,7 @@ class UsuariosController extends ApiController {
 
      /** Cadastra uma nova tarefa */
      public function cadastrar(Request $request) {
-        $validation = Validator::make($request->paciente, [
+        $validation = Validator::make($request->usuario, [
             'nome'              => 'required',
             'email'             => 'required|email|unique:usuarios,email',
             'data_nascimento'   => 'required',
@@ -29,10 +35,10 @@ class UsuariosController extends ApiController {
         if ($validation->fails()) {
             return response()->json($validation->errors(), 400);
         } else {
-            $paciente = $request->paciente;
-            $paciente['senha'] = bcrypt($paciente['senha']);
-            $paciente = Usuario::create($paciente);
-            return response()->json($paciente, 201);
+            $usuario = $request->usuario;
+            $usuario['senha'] = bcrypt($usuario['senha']);
+            $usuario = Usuario::create($usuario);
+            return response()->json($usuario, 201);
         }
     }
 
@@ -56,7 +62,7 @@ class UsuariosController extends ApiController {
 
         $usuario->fill($dados);
         
-        if ($request->usuario['senha'])
+        if (isset($request->usuario['senha']))
             $usuario->senha = bcrypt($request->usuario['senha']);
 
         $usuario->save();

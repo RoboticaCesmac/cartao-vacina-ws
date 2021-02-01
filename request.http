@@ -1,0 +1,92 @@
+#### 
+#@baseUrl = http://localhost:8000/api
+@baseUrl = http://192.168.15.3/api
+@token = eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6Mn0.Ex1EWgixK74csIwJkwN0iXVZ2cElHwnqd-iPcZQA518
+
+### Cadastro
+POST {{baseUrl}}/usuarios
+Content-Type: application/json
+
+{ 
+    "usuario": {
+        "data_nascimento": "1990-11-28",
+        "email": "teste@teste.com",  
+        "id": 0,
+        "nome": "Teste",
+        "senha": "123446"
+    }
+}
+
+
+### Login 
+POST {{baseUrl}}/login
+Content-Type: application/json
+
+{
+    "email": "teste@teste.com", 
+    "senha": "123446"
+}
+
+
+### Recuperar senha
+PUT {{baseUrl}}/senha
+Content-Type: application/json
+
+{ "email": "teste@teste.com" }
+
+### Atualizar 
+PUT {{baseUrl}}/usuarios
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{ 
+    "usuario": {
+        "data_nascimento": "1990-11-28",
+        "email": "teste@teste.com",  
+        "nome": "Teste 2",
+        "senha": "123456"
+    }
+}
+
+########################################################################
+################ VACINAS
+########################################################################
+# Cadastrar uma Vacinas
+POST {{baseUrl}}/vacinas
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "vacina": {
+        "tipo": 5,
+        "outro": "Teste",            
+        "dose1_data": "2021-02-01"
+    }
+}
+
+### Edita uma Vacinas
+PUT {{baseUrl}}/vacinas/1
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{ 
+    "vacina": {
+        "tipo":5,
+        "outro":"Teste",
+        "dose1_data": "2021-02-01",
+        "dose1_lote": "2",
+        "dose1_proxima_dose": "2021-03-01", 
+        "dose2_data": "2021-03-01",
+        "dose2_lote": "3"
+    }
+}
+
+### Buscar as vacinas do paciente
+GET {{baseUrl}}/vacinas
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+### Excluir uma Vacinas
+DELETE {{baseUrl}}/vacinas/1
+Content-Type: application/json
+Authorization: Bearer {{token}}

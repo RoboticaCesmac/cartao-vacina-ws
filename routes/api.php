@@ -30,4 +30,11 @@ Route::group(['middleware' => ['jwt']], function () {
     Route::group(['prefix' => 'usuarios'], function () {
         Route::put('/', 'Api\UsuariosController@atualizar');
     });
+
+    Route::group(['prefix' => 'vacinas'], function () {
+        Route::post('/', 'Api\VacinasController@cadastrar');
+        Route::get('/', 'Api\VacinasController@buscar');
+        Route::put('/{id}', 'Api\VacinasController@editar');
+        Route::delete('/{id}', 'Api\VacinasController@excluir');
+    });
 });
