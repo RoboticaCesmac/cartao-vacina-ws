@@ -37,4 +37,11 @@ Route::group(['middleware' => ['jwt']], function () {
         Route::put('/{id}', 'Api\VacinasController@editar');
         Route::delete('/{id}', 'Api\VacinasController@excluir');
     });
+
+    Route::group(['prefix' => 'sintomas'], function () {
+        Route::post('/', 'Api\SintomasController@cadastrar');
+        Route::get('/', 'Api\SintomasController@buscar');
+        Route::put('/{id}', 'Api\SintomasController@editar');
+        Route::delete('/{id}', 'Api\SintomasController@excluir');
+    });
 });

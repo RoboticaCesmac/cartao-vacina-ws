@@ -90,3 +90,45 @@ Authorization: Bearer {{token}}
 DELETE {{baseUrl}}/vacinas/1
 Content-Type: application/json
 Authorization: Bearer {{token}}
+
+########################################################################
+################ Sintomas
+########################################################################
+# Cadastrar uma Sintomas
+POST {{baseUrl}}/sintomas
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "sintoma": {
+        "tipo_id": 1,
+        "vacina_id": 5,            
+        "data_ocorrencia": "2021-02-10"           
+    }
+}
+
+### Edita uma Sintomas
+PUT {{baseUrl}}/sintomas/3
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{ 
+    "sintoma": {
+       "data_ocorrencia": "2021-02-26",
+        "id": 4,
+        "outro": null,
+        "paciente_id": 3,
+        "tipo_id": 2,
+        "vacina_id": 4
+            }
+}
+
+### Buscar as sintomas do paciente
+GET {{baseUrl}}/sintomas
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+### Excluir um sintoma
+DELETE {{baseUrl}}/sintomas/1
+Content-Type: application/json
+Authorization: Bearer {{token}}
