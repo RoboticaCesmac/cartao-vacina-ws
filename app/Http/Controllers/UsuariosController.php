@@ -44,7 +44,7 @@ class UsuariosController extends Controller {
             'email' => 'required|email|unique:usuarios,email',
         ]);
         $dados = $request->all();
-        $dados['senha'] = md5($dados['senha']);
+        $dados['senha'] = bcrypt($dados['senha']);
         Usuario::create($dados);
 
         return redirect()->route('usuarios.listar')->with(['sucesso' => 'Usuário cadastrado com sucesso']);
@@ -70,7 +70,7 @@ class UsuariosController extends Controller {
 
         $dados = $request->except(['_token']);
         if (!empty($dados['senha']))
-            $dados['senha'] = md5($dados['senha']);
+            $dados['senha'] = bcrypt($dados['senha']);
         else unset($dados['senha']);
         Usuario::where('id', $id)->update($dados);
 
