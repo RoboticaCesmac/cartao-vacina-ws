@@ -10,15 +10,18 @@ use Illuminate\Queue\SerializesModels;
 class RecuperarSenha extends Mailable
 {
     use Queueable, SerializesModels;
+    private $dados;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($usuario, $token)
     {
         //
+        $this->dados['usuario'] = $usuario;
+        $this->dados['token'] = $token;
     }
 
      /**

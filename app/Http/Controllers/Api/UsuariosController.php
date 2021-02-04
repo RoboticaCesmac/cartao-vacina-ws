@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Mail\RecuperarSenha;
 use App\Models\Usuario;
 use Firebase\JWT\JWT;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 
 class UsuariosController extends ApiController {

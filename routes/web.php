@@ -18,6 +18,8 @@ Route::get('/', function() { return redirect()->route('login'); });
 Route::get('/login', 'LoginController@index')->name('login');
 Route::post('/logar', 'LoginController@logar')->name('logar');
 Route::get('/logout', 'LoginController@logout')->name('logout');
+Route::get('/nova-senha', 'LoginController@recuperarSenha')->name('senha.recuperar');
+Route::post('/nova-senha', 'LoginController@salvarNovaSenha')->name('senha.nova');
 
 Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
     Route::get('/dashboard', 'DashboardController@index')->name('dashboard');

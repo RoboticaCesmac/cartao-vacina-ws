@@ -4,7 +4,7 @@
                     <div class="login-content">
                         <div class="login-logo">
                             <a href="#">
-                                <img src="{{asset('images/icon/ravvs.png')}}" style="height: 100px" alt="CoolAdmin">
+                                <img src="{{asset('images/icon/cit.png')}}" style="height: 100px" alt="CESMAC">
                             </a>
                         </div>
                         <div class="login-form">

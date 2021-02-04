@@ -48,6 +48,12 @@ Authorization: Bearer {{token}}
     }
 }
 
+### Recuperar senha
+PUT {{baseUrl}}/senha
+Content-Type: application/json
+
+{ "email": "carloswgama@gmail.com"  }
+
 ########################################################################
 ################ VACINAS
 ########################################################################
