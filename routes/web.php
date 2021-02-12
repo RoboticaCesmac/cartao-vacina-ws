@@ -24,6 +24,7 @@ Route::post('/nova-senha', 'LoginController@salvarNovaSenha')->name('senha.nova'
 Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
     Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 
+    // USUARIOS
     Route::group(['prefix' => 'usuarios'], function () {
         Route::get('/', 'UsuariosController@index')->name('usuarios.listar');
         Route::get('/novo', 'UsuariosController@novo')->name('usuarios.novo');
@@ -31,6 +32,12 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
         Route::get('/edicao/{id}', 'UsuariosController@edicao')->name('usuarios.edicao');
         Route::post('/editar/{id}', 'UsuariosController@editar')->name('usuarios.editar');
         Route::get('/excluir/{id?}', 'UsuariosController@excluir')->name('usuarios.excluir');
+    });
+
+    /** RELATORIOS */
+    Route::group(['prefix' => 'relatorios'], function () {
+        Route::get('/sintomaticos', 'RelatorioController@sintomaticos')->name('relatorio.sintomaticos');
+        Route::get('/estatistica', 'RelatorioController@estatisticas')->name('relatorio.estatistica');
     });
 });
 

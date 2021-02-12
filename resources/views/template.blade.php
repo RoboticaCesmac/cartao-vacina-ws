@@ -114,13 +114,13 @@
                             <a class="js-arrow" href="#"><i class="fas fa-chart-pie"></i>Relatórios</a>
                             <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
                                 <!-- Dados -->
-                                {{-- <li>
-                                    <a href="{{route('relatorio.dados')}}">Ocorrências</a>
+                                <li>
+                                    <a href="{{route('relatorio.sintomaticos')}}">Sintomáticos</a>
                                 </li>
                                 <!-- CONTATO -->
                                 <li>
-                                    <a href="{{route('relatorio.estatistica')}}">Estatística</a>
-                                </li> --}}
+                                    <a href="{{route('relatorio.estatistica')}}">Estatísticas</a>
+                                </li>
                             </ul>
                         </li>
                     </ul>

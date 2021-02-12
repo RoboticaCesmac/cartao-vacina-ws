@@ -15,4 +15,14 @@ class Vacina extends Model {
         return $this->belongsTo(Usuario::class, 'paciente_id', 'id');
     } 
 
+    public function getVacinaAttribute() {
+        switch($this->attributes['tipo']) {
+            case 1: return 'Astrazeneca(Fiocruz)';
+            case 2: return 'Coronavac(Butantan)';
+            case 3: return 'Peizer';
+            case 4: return 'Moderna';
+            default: return $this->attributes['outro'];
+        }
+    }
+
 }

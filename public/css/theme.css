@@ -14642,3 +14642,40 @@ section {
 .vue-lists ul, .vue-lists ol {
     padding-left: 30px;
 }
+/* ------------------------------------ **/
+.form-busca {
+    padding: 20px;
+    flex-direction: row;
+    display: flex;
+    flex: 1;
+}
+.input-busca {
+    max-width: 400px;
+}
+/* ------------------------------------ **/
+.btn-opcs a, .btn-opcs p {
+    border: 1px solid gray;
+    border-radius: 5px;
+    padding: 5px 7px;
+    cursor: pointer;
+    margin: 5px;
+    font-size: 10px;
+    display: inline-block;
+    text-align: center;
+}
+
+.btn-opcs a:hover, .btn-opcs p:hover {
+    color: burlywood;
+}
+
+.bg-verde { background-color: #4CAF50; color: white}
+.bg-azul { background-color: #008CBA; color: white}
+.bg-vermelho { background-color: #f44336; color: white}
+.bg-cinza { background-color: #e7e7e7; color: black}
+.bg-preto { background-color: #555555; color: white}
+/* --------------------------------------------*/
+.form-label {
+    margin-left: 10px;
+    margin-bottom: 0px !important;
+    font-weight: bolder;
+}
